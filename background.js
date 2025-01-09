@@ -25,9 +25,15 @@ chrome.runtime.onInstalled.addListener(function() {
           timestamp: new Date().toISOString()
         });
         
-        // Save and notify
+        // Save and show notification
         chrome.storage.sync.set({ notes: notes }, function() {
-          chrome.runtime.sendMessage({ action: "noteAdded" });
+          // Show Chrome notification
+          chrome.notifications.create({
+            type: 'basic',
+            iconUrl: 'icon48.png',
+            title: 'Quick Notes',
+            message: 'Note saved successfully!'
+          });
         });
       });
     }

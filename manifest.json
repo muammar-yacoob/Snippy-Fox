@@ -1,18 +1,19 @@
 {
     "manifest_version": 3,
-    "name": "Quick Notes",
+    "name": "Revisit",
+    "version": "1.0",
     "author": "Spark Games",
     "homepage_url": "https://spark-games.co.uk",
-    "version": "1.0",
-    "description": "A simple note-taking extension for quick thoughts and reminders",
+    "description": "Mark pages to be revisited with a custom note.",
     "permissions": [
-        "storage",
-        "contextMenus",
-        "activeTab"
-      ],
-      "background": {
-        "service_worker": "background.js"
-      },
+      "storage",
+      "contextMenus",
+      "activeTab",
+      "notifications"
+    ],
+    "background": {
+      "service_worker": "background.js"
+    },
     "action": {
       "default_popup": "popup.html"
     },
