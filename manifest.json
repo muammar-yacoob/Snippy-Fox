@@ -1,0 +1,23 @@
+{
+    "manifest_version": 3,
+    "name": "Quick Notes",
+    "author": "Spark Games",
+    "homepage_url": "https://spark-games.co.uk",
+    "version": "1.0",
+    "description": "A simple note-taking extension for quick thoughts and reminders",
+    "permissions": [
+        "storage",
+        "contextMenus",
+        "activeTab"
+      ],
+      "background": {
+        "service_worker": "background.js"
+      },
+    "action": {
+      "default_popup": "popup.html"
+    },
+    "icons": {
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  }
