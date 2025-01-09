@@ -1,4 +1,19 @@
-document.addEventListener('DOMContentLoaded', function() {
+function showSaveConfirmation() {
+    let notification = document.getElementById('saveNotification');
+    if (!notification) {
+      notification = document.createElement('div');
+      notification.id = 'saveNotification';
+      notification.className = 'save-notification';
+      document.body.appendChild(notification);
+    }
+  
+    notification.textContent = 'Note saved!';
+    notification.classList.add('show');
+  
+    setTimeout(() => {
+      notification.classList.remove('show');
+    }, 2000);
+  }document.addEventListener('DOMContentLoaded', function() {
     loadNotes();
     loadSettings();
     
@@ -118,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function() {
           chrome.storage.sync.set({ notes: notes }, function() {
             input.value = '';
             loadNotes();
-            showSaveConfirmation();
+            showSaveConfirmation();  // Put this back!
             
             if (shouldClose && currentTabId) {
               chrome.tabs.remove(currentTabId);
@@ -127,6 +142,26 @@ document.addEventListener('DOMContentLoaded', function() {
         });
       });
     }
+  }
+  
+  function showSaveConfirmation() {
+    let notification = document.getElementById('saveNotification');
+    if (!notification) {
+      notification = document.createElement('div');
+      notification.id = 'saveNotification';
+      notification.className = 'save-notification';
+      notification.textContent = 'Note saved!';
+      document.body.appendChild(notification);
+    }
+  
+    // Reset animation
+    notification.classList.remove('show');
+    void notification.offsetHeight; // Trigger reflow
+    notification.classList.add('show');
+  
+    setTimeout(() => {
+      notification.classList.remove('show');
+    }, 2000);
   }
   
   function addNoteToList(text, url, index) {
@@ -241,26 +276,29 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   function showSaveConfirmation() {
-    let notification = document.getElementById('saveNotification');
-    if (!notification) {
-      notification = document.createElement('div');
-      notification.id = 'saveNotification';
-      notification.className = 'save-notification';
+    // Remove any existing notification
+    const existingNotification = document.getElementById('saveNotification');
+    if (existingNotification) {
+      existingNotification.remove();
     }
   
+    // Create new notification
+    const notification = document.createElement('div');
+    notification.id = 'saveNotification';
+    notification.className = 'save-notification';
     notification.textContent = 'Note saved!';
+    
+    // Add to DOM
     document.body.appendChild(notification);
+    
+    // Trigger animation
+    requestAnimationFrame(() => {
+      notification.classList.add('show');
+    });
   
-    // Force a reflow before adding the show class
-    notification.offsetHeight;
-    notification.classList.add('show');
-  
+    // Remove after delay
     setTimeout(() => {
       notification.classList.remove('show');
-      setTimeout(() => {
-        if (notification.parentNode) {
-          notification.parentNode.removeChild(notification);
-        }
-      }, 300);
+      setTimeout(() => notification.remove(), 300); // Wait for fade out animation
     }, 2000);
   }
