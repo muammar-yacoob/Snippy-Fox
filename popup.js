@@ -246,17 +246,21 @@ document.addEventListener('DOMContentLoaded', function() {
       notification = document.createElement('div');
       notification.id = 'saveNotification';
       notification.className = 'save-notification';
-      notification.textContent = 'Note saved! Click to view';
-      notification.onclick = function() {
-        // Focus the popup
-        window.focus();
-      };
-      document.body.appendChild(notification);
     }
   
+    notification.textContent = 'Note saved!';
+    document.body.appendChild(notification);
+  
+    // Force a reflow before adding the show class
+    notification.offsetHeight;
     notification.classList.add('show');
   
     setTimeout(() => {
       notification.classList.remove('show');
+      setTimeout(() => {
+        if (notification.parentNode) {
+          notification.parentNode.removeChild(notification);
+        }
+      }, 300);
     }, 2000);
   }

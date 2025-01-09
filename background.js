@@ -7,7 +7,7 @@ chrome.runtime.onInstalled.addListener(function() {
     // Create context menu
     chrome.contextMenus.create({
       id: "addToNotes",
-      title: "Add to Revisit",
+      title: "Add to Snippy Fox",
       contexts: ["selection"]
     });
   });
@@ -32,7 +32,7 @@ chrome.runtime.onInstalled.addListener(function() {
           chrome.notifications.create({
             type: 'basic',
             iconUrl: 'icon48.png',
-            title: 'Revisit',
+            title: 'Snippy Fox',
             message: 'Note saved successfully!'
           });
   
