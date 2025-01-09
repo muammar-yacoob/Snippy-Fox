@@ -34,12 +34,25 @@ document.addEventListener('DOMContentLoaded', function() {
   
   function filterNotes(searchTerm) {
     chrome.storage.sync.get(['notes'], function(result) {
-      const notes = Array.isArray(result.notes) ? result.notes : [];
-      const filteredNotes = searchTerm ? 
-        notes.filter(note => note.text.toLowerCase().includes(searchTerm)) : 
-        notes;
+      const allNotes = Array.isArray(result.notes) ? result.notes : [];
       
-      renderNotes(filteredNotes);
+      if (searchTerm) {
+        // Find all matching notes and their original indices
+        const matches = allNotes.map((note, index) => ({note, index}))
+                               .filter(item => item.note.text.toLowerCase().includes(searchTerm));
+        
+        // Map to the format expected by renderNotes but include original index
+        const filteredNotes = matches.map(({note, index}) => ({
+          text: note.text,
+          url: note.url,
+          timestamp: note.timestamp,
+          originalIndex: index  // Keep track of where this note is in the full list
+        }));
+        
+        renderNotes(filteredNotes);
+      } else {
+        renderNotes(allNotes);
+      }
     });
   }
   
@@ -62,11 +75,15 @@ document.addEventListener('DOMContentLoaded', function() {
       return;
     }
   
-    // Keep only the latest 10 notes and preserve the actual index
+    // Keep only the latest 10 notes
     const recentNotes = notes.slice(-10);
-    recentNotes.forEach((note, displayIndex) => {
-      const actualIndex = notes.length - recentNotes.length + displayIndex;
-      addNoteToList(note.text, note.url, actualIndex);
+    recentNotes.forEach((note) => {
+      // If we're filtering (note has originalIndex), use that, otherwise calculate the index
+      const index = note.originalIndex !== undefined 
+        ? note.originalIndex 
+        : notes.length - recentNotes.length + recentNotes.indexOf(note);
+      
+      addNoteToList(note.text, note.url, index);
     });
   }
   
