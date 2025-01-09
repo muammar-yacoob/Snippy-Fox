@@ -7,16 +7,17 @@ chrome.runtime.onInstalled.addListener(function() {
     // Create context menu
     chrome.contextMenus.create({
       id: "addToNotes",
-      title: "Add to Quick Notes",
+      title: "Add to Revisit",
       contexts: ["selection"]
     });
   });
   
   chrome.contextMenus.onClicked.addListener(function(info, tab) {
     if (info.menuItemId === "addToNotes") {
-      chrome.storage.sync.get(['notes'], function(result) {
+      chrome.storage.sync.get(['notes', 'closeAfterSave'], function(result) {
         // Ensure notes is an array
         const notes = Array.isArray(result.notes) ? result.notes : [];
+        const shouldClose = result.closeAfterSave || false;
         
         // Add new note
         notes.push({
@@ -31,9 +32,14 @@ chrome.runtime.onInstalled.addListener(function() {
           chrome.notifications.create({
             type: 'basic',
             iconUrl: 'icon48.png',
-            title: 'Quick Notes',
+            title: 'Revisit',
             message: 'Note saved successfully!'
           });
+  
+          // Close tab if setting is enabled
+          if (shouldClose && tab.id) {
+            chrome.tabs.remove(tab.id);
+          }
         });
       });
     }

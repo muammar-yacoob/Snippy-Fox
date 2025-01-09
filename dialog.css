@@ -1,0 +1,109 @@
+/* Delete Dialog */
+.delete-dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.2s ease-out;
+  }
+  
+  .delete-dialog {
+    background-color: #2d2e32;
+    border-radius: 8px;
+    padding: 16px;
+    width: 90%;
+    max-width: 280px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    animation: slideIn 0.2s ease-out;
+  }
+  
+  .delete-dialog p {
+    margin: 0 0 16px 0;
+    text-align: center;
+    color: #e4e4e4;
+    font-size: 14px;
+  }
+  
+  .dialog-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+  }
+  
+  .dialog-btn {
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+  }
+  
+  .dialog-btn.cancel-btn {
+    background-color: transparent;
+    color: #909296;
+    border: 1px solid #404040;
+  }
+  
+  .dialog-btn.cancel-btn:hover {
+    background-color: #404040;
+    color: #e4e4e4;
+  }
+  
+  .dialog-btn.confirm-btn {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  .dialog-btn.confirm-btn:hover {
+    background-color: #d32f2f;
+  }
+  
+  /* Save Notification */
+  .save-notification {
+    position: fixed;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background-color: #64b5f6;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 3px;
+    font-size: 12px;
+    opacity: 0;
+    transition: transform 0.3s, opacity 0.3s;
+    cursor: pointer;
+  }
+  
+  .save-notification:hover {
+    background-color: #90caf9;
+  }
+  
+  .save-notification.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateY(-10px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }

@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     loadNotes();
+    loadSettings();
     
     // Add event listeners
     document.getElementById('addNote').addEventListener('click', addManualNote);
@@ -7,6 +8,11 @@ document.addEventListener('DOMContentLoaded', function() {
       if (e.key === 'Enter') {
         addManualNote();
       }
+    });
+  
+    // Settings listener
+    document.getElementById('closeAfterSave').addEventListener('change', function(e) {
+      chrome.storage.sync.set({ closeAfterSave: e.target.checked });
     });
   
     // Search functionality
@@ -20,12 +26,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
   
-  // Listen for messages from background script
-  chrome.runtime.onMessage.addListener(function(message) {
-    if (message.action === "noteAdded") {
-      loadNotes();
-    }
-  });
+  function loadSettings() {
+    chrome.storage.sync.get(['closeAfterSave'], function(result) {
+      document.getElementById('closeAfterSave').checked = result.closeAfterSave || false;
+    });
+  }
   
   function filterNotes(searchTerm) {
     chrome.storage.sync.get(['notes'], function(result) {
@@ -57,9 +62,11 @@ document.addEventListener('DOMContentLoaded', function() {
       return;
     }
   
-    // Keep only the latest 10 notes
-    notes.slice(-10).forEach((note, index) => {
-      addNoteToList(note.text, note.url, notes.length - 10 + index);
+    // Keep only the latest 10 notes and preserve the actual index
+    const recentNotes = notes.slice(-10);
+    recentNotes.forEach((note, displayIndex) => {
+      const actualIndex = notes.length - recentNotes.length + displayIndex;
+      addNoteToList(note.text, note.url, actualIndex);
     });
   }
   
@@ -77,12 +84,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const text = input.value.trim();
     
     if (text) {
-      // Get current active tab
       chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
         const currentUrl = tabs[0]?.url || '';
+        const currentTabId = tabs[0]?.id;
         
-        chrome.storage.sync.get(['notes'], function(result) {
+        chrome.storage.sync.get(['notes', 'closeAfterSave'], function(result) {
           const notes = Array.isArray(result.notes) ? result.notes : [];
+          const shouldClose = result.closeAfterSave || false;
           
           notes.push({
             text: text,
@@ -94,6 +102,10 @@ document.addEventListener('DOMContentLoaded', function() {
             input.value = '';
             loadNotes();
             showSaveConfirmation();
+            
+            if (shouldClose && currentTabId) {
+              chrome.tabs.remove(currentTabId);
+            }
           });
         });
       });
@@ -157,29 +169,48 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   function showDeleteConfirmation(index) {
-    const dialog = document.createElement('div');
-    dialog.className = 'delete-dialog';
-    dialog.innerHTML = `
-      <div class="delete-dialog-content">
-        <p>Delete this note?</p>
+    chrome.storage.sync.get(['notes'], function(result) {
+      const notes = Array.isArray(result.notes) ? result.notes : [];
+      const note = notes[index];
+      if (!note) return;
+  
+      // Create overlay
+      const overlay = document.createElement('div');
+      overlay.className = 'delete-dialog-overlay';
+  
+      // Create dialog
+      const dialog = document.createElement('div');
+      dialog.className = 'delete-dialog';
+      
+      // Truncate note text if too long
+      const notePreview = note.text.length > 50 ? note.text.substring(0, 50) + '...' : note.text;
+      
+      dialog.innerHTML = `
+        <p>Delete note "${notePreview}"?</p>
         <div class="dialog-buttons">
           <button class="dialog-btn cancel-btn">Cancel</button>
           <button class="dialog-btn confirm-btn">Delete</button>
         </div>
-      </div>
-    `;
+      `;
   
-    // Handle button clicks
-    dialog.querySelector('.cancel-btn').onclick = () => {
-      dialog.remove();
-    };
+      // Handle button clicks
+      const cancelBtn = dialog.querySelector('.cancel-btn');
+      const confirmBtn = dialog.querySelector('.confirm-btn');
   
-    dialog.querySelector('.confirm-btn').onclick = () => {
-      deleteNote(index);
-      dialog.remove();
-    };
+      cancelBtn.onclick = () => overlay.remove();
+      confirmBtn.onclick = () => {
+        deleteNote(index);
+        overlay.remove();
+      };
   
-    document.body.appendChild(dialog);
+      // Close on overlay click
+      overlay.onclick = (e) => {
+        if (e.target === overlay) overlay.remove();
+      };
+  
+      overlay.appendChild(dialog);
+      document.body.appendChild(overlay);
+    });
   }
   
   function deleteNote(index) {
