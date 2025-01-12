@@ -10,7 +10,7 @@
     }],
     ["@semantic-release/github", {
       "assets": [
-        {"path": "extension.zip", "label": "Extension Package"}
+        {"path": "extension.zip", "label": "Chrome Extension Package"}
       ]
     }]
   ]

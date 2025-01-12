@@ -5,7 +5,6 @@ on:
     branches:
       - main
 
-# Add permissions block
 permissions:
   contents: write
   issues: write
@@ -27,7 +26,11 @@ jobs:
         with:
           node-version: 'lts/*'
 
-      - name: Install dependencies
+      - name: Create Extension Package
+        run: |
+          zip -r extension.zip . -x "*.git*" "*.github*" "*.md" "LICENSE"
+
+      - name: Install semantic-release
         run: npm install -g semantic-release @semantic-release/git @semantic-release/changelog
 
       - name: Create Release
