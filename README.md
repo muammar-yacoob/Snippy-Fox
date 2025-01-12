@@ -1,6 +1,6 @@
 # 🦊 Snippy Fox
 
-> Save interesting bits from the web in a click!
+#### Save interesting bits from the web in a click!
 
 <div align="center">
 
