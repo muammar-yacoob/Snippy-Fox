@@ -1,4 +1,36 @@
-/* Base styles */
+/* Header styles */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.header-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.header-text h1 {
+  margin: 0;
+  padding: 0;
+  border: none;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.version-tag {
+  color: #909296;
+  font-size: 11px;
+  line-height: 1;
+}
+
 body {
     width: 350px;
     margin: 0;

@@ -149,3 +149,27 @@
   #addNote:hover {
     background-color: #90caf9;
   }
+
+  .delete-btn {
+    color: #f44336;
+    width: 20px;
+    height: 20px;
+    position: relative;
+  }
+  
+  .delete-btn::before {
+    content: "x";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1;
+    
+  }
+  
+  .delete-btn:hover {
+    background-color: rgba(244, 67, 54, 0.1);
+    color: #ef5350;
+  }
