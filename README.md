@@ -1,6 +1,10 @@
 [//]: # (Constants)
-[store-link]: https://chrome.google.com/webstore/detail/nnnmapjajgklhambmgogecekldfcpoie
-[ext-id]: nnnmapjajgklhambmgogecekldfcpoie
+[store-link]: https://chrome.google.com/webstore/detail/[ext-id]
+[ext-id]: your-extension-id
+[privacy-link]: https://github.com/muammar-yacoob/Snippy-Fox/blob/main/PRIVACY.md
+
+
+
 
 # 🦊 Snippy Fox
 
@@ -10,11 +14,7 @@
 
 ![Preview](res/images/preview.png)
 
-[![Chrome Web Store][store-badge]][store-link] • [Report Bug](https://github.com/muammar-yacoob/Snippy-Fox/issues)
-
-[![GitHub stars](https://img.shields.io/github/stars/muammar-yacoob/Snippy-Fox?style=social)](https://github.com/muammar-yacoob/Snippy-Fox/stargazers)
-[![Chrome Users](https://img.shields.io/chrome-web-store/users/[ext-id]?label=Chrome%20Users)][store-link]
-[![Rating](https://img.shields.io/chrome-web-store/rating/[ext-id]?label=Rating)][store-link]
+[Chrome Web Store][store-link] • [Privacy Policy][privacy-link] • [Report Bug](issues)
 
 </div>
 
