@@ -1,4 +1,3 @@
-// background.js
 import { addNote } from './noteManager.js';
 
 chrome.runtime.onInstalled.addListener(() => {

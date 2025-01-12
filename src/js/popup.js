@@ -1,12 +1,10 @@
-// popup.js
 import { 
   getAllNotes, 
   addNote, 
   deleteNote, 
-  updateNote, 
   filterNotes,
   getFaviconUrl 
-} from './noteManager.js';
+} from './noteManager.js'; 
 
 document.addEventListener('DOMContentLoaded', () => {
   initializePopup();

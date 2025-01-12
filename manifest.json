@@ -3,23 +3,23 @@
   "name": "Snippy Fox",
   "version": "1.0",
   "author": "Spark Games",
-  "homepage_url": "https://spark-games.co.uk",
   "description": "Mark pages to be revisited with a custom note.",
+  "homepage_url": "https://spark-games.co.uk",
   "permissions": [
     "storage",
     "contextMenus",
     "activeTab",
     "notifications"
   ],
+  "icons": {
+    "48": "res/icons/icon48.png",
+    "128": "res/icons/icon128.png"
+  },
   "background": {
-    "service_worker": "background.js",
+    "service_worker": "src/js/background.js",
     "type": "module"
   },
   "action": {
-    "default_popup": "popup.html"
-  },
-  "icons": {
-    "48": "icon48.png",
-    "128": "icon128.png"
+    "default_popup": "src/html/popup.html"
   }
 }

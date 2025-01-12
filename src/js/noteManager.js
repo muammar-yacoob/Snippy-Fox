@@ -1,12 +1,12 @@
 export async function showNotification(title, message) {
-    await chrome.notifications.create({
-      type: 'basic',
-      iconUrl: '/icon48.png',  // Make sure path starts with /
-      title: title,
-      message: message,
-      priority: 2
-    });
-  }
+  await chrome.notifications.create({
+    type: 'basic',
+    iconUrl: '/res/icons/icon48.png',  // Root relative path
+    title: title,
+    message: message,
+    priority: 2
+  });
+}
   
   export async function getAllNotes() {
     const { notes = [] } = await chrome.storage.sync.get(['notes']);
@@ -73,8 +73,8 @@ export async function showNotification(title, message) {
   export function getFaviconUrl(url) {
     try {
       const domain = new URL(url).hostname;
-      return `https://www.google.com/s2/favicons?domain=${domain}&sz=16`;
+      return `https://www.google.com/s2/favicons?domain=${domain}&sz=16`;  // Use Google favicon service
     } catch {
-      return null;
+      return '/res/icons/icon48.png';
     }
   }

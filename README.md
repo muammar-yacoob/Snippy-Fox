@@ -1,92 +1,54 @@
 # 🦊 Snippy Fox
 
-> Catch interesting bits from the web and revisit them later! 
-
-Snippy Fox (formerly Revisit) is a lightweight Chrome extension that helps you save and organize text snippets from any webpage. Think of it as your clever little fox friend who helps you collect and remember the interesting things you find while browsing.
+Save and revisit interesting bits from the web with a click!
 
 ![Snippy Fox Demo](demo.gif)
 
-## ✨ Features
+## Features
+- Save text snippets from any webpage via right-click
+- Auto-saves source URL and favicon
+- Quick search through saved snippets
+- Dark mode UI
+- Optional auto-close tabs after saving
 
-- 🎯 Quick capture: Right-click any text selection to save
-- 🌐 Context preservation: Automatically saves the source URL and favicon
-- 🔍 Smart search: Quickly find your saved snippets
-- 🎨 Dark mode by default: Easy on your eyes
-- ⚡ Smart tab management: Optionally close tabs after saving
-- 💾 Privacy-focused: All data stays in your browser
-
-## 🚀 Installation
-
-1. Visit the [Chrome Web Store](your_store_link)
-2. Click "Add to Chrome"
-3. Start collecting snippets!
-
-Or install from source:
+## Installation
+- [Chrome Web Store](your_store_link)
+- Or load unpacked from source:
 ```bash
-# Clone the repository
-git clone https://github.com/yourusername/snippy-fox.git
-
-# Load in Chrome
-1. Open chrome://extensions
-2. Enable "Developer mode"
-3. Click "Load unpacked"
-4. Select the snippy-fox directory
+git clone https://github.com/muammar-yacoob/Snippy-Fox.git
+chrome://extensions -> Developer mode -> Load unpacked
 ```
 
-## 🎮 How to Use
-
-1. Select any text on a webpage
-2. Right-click and choose "Add to Snippy Fox"
-3. Access your snippets anytime from the toolbar icon
-4. Click the link icon to return to the original page
-
-## 🛠️ Development
-
+## Development
 ```bash
-# Structure
-├── manifest.json
-├── background.js
-├── popup.html
-├── popup.js
-├── styles/
-│   ├── base.css
-│   ├── components.css
-│   ├── dialog.css
-│   ├── utils.css
-│   └── styles.css
+├── manifest.json       # Extension config
+├── background.js      # Background service worker
+├── popup.html/js      # Extension popup UI
+├── noteManager.js     # Note handling logic
+└── styles/           
+    └── *.css         # UI styling
 ```
 
-### Local Development
-1. Make your changes
-2. Reload the extension in chrome://extensions
-3. Test your changes
+### Release Process
+This project uses semantic-release for versioning:
+- `fix:` commits trigger patch releases (bug fixes)
+- `feat:` commits trigger minor releases (new features)
+- `BREAKING CHANGE:` commits trigger major releases
 
-## 🤝 Contributing
+The GitHub Action workflow automatically:
+1. Determines version from commits
+2. Updates manifest.json version
+3. Creates GitHub release
+4. Generates CHANGELOG.md
 
-Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
+### Quick Start
+1. Make changes
+2. Commit using semantic messages
+```bash
+git commit -m "feat: add new feature"
+git commit -m "fix: resolve notification issue"
+```
+3. Push to main to trigger release
 
-1. Fork the Project
-2. Create your Feature Branch (\`git checkout -b feature/AmazingFeature\`)
-3. Commit your Changes (\`git commit -m 'Add some AmazingFeature'\`)
-4. Push to the Branch (\`git push origin feature/AmazingFeature\`)
-5. Open a Pull Request
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- Icons from [Lucide](https://lucide.dev/)
-- Favicon service by Google
-- All the awesome contributors
-
-## 🦊 Why Snippy Fox?
-
-We chose this name because like a clever fox, this extension helps you collect and remember interesting bits from around the web. It's quick, smart, and just a bit playful - just like a fox!
-
----
-
-Made with ❤️ by [Your Name/Team]
-
-[GitHub](your_github_link) • [Website](your_website_link) • [Twitter](your_twitter_link)
+## License
+[MIT](LICENSE)
