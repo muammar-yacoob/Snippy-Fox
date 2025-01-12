@@ -1,6 +1,6 @@
 [//]: # (Constants)
-[store-link]: https://chrome.google.com/webstore/detail/[ext-id]
-[ext-id]: your-extension-id
+[store-link]: https://chrome.google.com/webstore/detail/piohdbapddlkcnbddkheifoeaalgalin
+[ext-id]: piohdbapddlkcnbddkheifoeaalgalin
 [privacy-link]: https://github.com/muammar-yacoob/Snippy-Fox/blob/main/PRIVACY.md
 
 
