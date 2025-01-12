@@ -4,7 +4,7 @@
   "version": "1.0",
   "author": "Spark Games",
   "description": "Mark pages to be revisited with a custom note.",
-  "homepage_url": "https://spark-games.co.uk",
+  "homepage_url": "https://github.com/muammar-yacoob/Snippy-Fox",
   "permissions": [
     "storage",
     "contextMenus",
