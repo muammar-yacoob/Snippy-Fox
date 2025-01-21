@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/muammar-yacoob/Snippy-Fox/compare/v1.1.1...v1.1.2) (2025-01-21)
+
+
+### Bug Fixes
+
+* update readme.md ([09a7ec7](https://github.com/muammar-yacoob/Snippy-Fox/commit/09a7ec7fc8f143bcc76a02cbea97f4ea27ed1199))
+
 ## [1.1.1](https://github.com/muammar-yacoob/Snippy-Fox/compare/v1.1.0...v1.1.1) (2025-01-21)
 
 
