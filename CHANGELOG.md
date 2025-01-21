@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/muammar-yacoob/Snippy-Fox/compare/v1.1.2...v1.1.3) (2025-01-21)
+
+
+### Bug Fixes
+
+* update manifest version number upon release ([a712b61](https://github.com/muammar-yacoob/Snippy-Fox/commit/a712b616e0462c6864711b7af3dbd99c082d5f77))
+
 ## [1.1.2](https://github.com/muammar-yacoob/Snippy-Fox/compare/v1.1.1...v1.1.2) (2025-01-21)
 
 
