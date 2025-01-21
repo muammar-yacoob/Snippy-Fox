@@ -28,7 +28,8 @@ jobs:
 
       - name: Create Extension Package
         run: |
-          zip -r SnippyFox.zip . -x "*.git*" "*.github*" "*.md" "LICENSE"
+          NAME=$(node -p "require('./manifest.json').name.replace(' ', '')")
+          zip -r $NAME.zip . -x "*.git*" "*.github*" "*.md" "LICENSE" "manifest.json"
 
       - name: Install semantic-release
         run: npm install -g semantic-release @semantic-release/git @semantic-release/changelog

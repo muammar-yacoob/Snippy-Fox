@@ -14,7 +14,7 @@
 
 ![Preview](res/images/preview.png)
 
-[Chrome Web Store][store-link] • [Privacy Policy][privacy-link] • [Report Bug](issues)
+[Chrome Web Store][store-link] • [Privacy Policy][privacy-link] • [Report Bug](../../issues)
 
 </div>
 

@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Snippy Fox",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "author": "Spark Games",
   "description": "Mark pages to be revisited with a custom note.",
   "homepage_url": "https://github.com/muammar-yacoob/Snippy-Fox",

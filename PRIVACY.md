@@ -1,10 +1,8 @@
 
-# Privacy Policy for Snippy Fox
-
-*Last updated: January 12, 2024*
+# Privacy Policy
 
 ## Data Collection
-Snippy Fox only stores the data you explicitly save:
+🦊 Snippy Fox only stores the data you explicitly save:
 - Text snippets you select
 - URLs of pages where snippets were saved
 - Website favicons
@@ -22,4 +20,4 @@ All data is stored locally in your browser using Chrome's storage sync API and i
 - No external services are used except Google's favicon service for website icons
 
 ## Contact
-For any questions about this privacy policy, please create an issue on our [GitHub repository](https://github.com/muammar-yacoob/Snippy-Fox/issues).
+For any questions about this privacy policy, please create an issue on our [GitHub repository](../../issues).
