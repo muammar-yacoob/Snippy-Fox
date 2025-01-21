@@ -38,4 +38,4 @@ Watch the [demo video](https://youtube.com/shorts/DnWywDT0na8)
    Load in Chrome: Extensions -> Developer mode -> Load unpacked
 
 ## 🌱 Contributions
-Found this useful? Give it a ⭐ and feel free to share ideas or [contribute.](https://github.com/muammar-yacoob/Snippy-Fox) Released under MIT license.
+Found this useful? Give it a ⭐ and feel free to share ideas or [contribute.](https://github.com/muammar-yacoob/Snippy-Fox/fork) Released under MIT license.
