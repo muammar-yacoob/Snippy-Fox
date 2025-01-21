@@ -1,6 +1,6 @@
 [//]: # (Constants)
 [ext-id]: piohdbapddlkcnbddkheifoeaalgalin
-[store-link]: https://chrome.google.com/webstore/detail/[ext-id]
+[store-link]: https://chrome.google.com/webstore/detail/snippy-fox/piohdbapddlkcnbddkheifoeaalgalin
 [privacy-link]: https://github.com/muammar-yacoob/Snippy-Fox/blob/main/PRIVACY.md
 
 
