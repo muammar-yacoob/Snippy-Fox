@@ -17,3 +17,10 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     }
   }
 });
+
+document.addEventListener('contextmenu', function(e) {
+  chrome.runtime.sendMessage({
+      type: 'rightClickText',
+      text: e.target.textContent?.trim()
+  });
+});
