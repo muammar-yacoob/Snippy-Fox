@@ -31,6 +31,14 @@ jobs:
           NAME=$(node -p "require('./manifest.json').name.replace(' ', '')")
           zip -r $NAME.zip . -x "*.git*" "*.github*" "*.md" "LICENSE" "manifest.json"
 
+      - name: Update manifest version
+        run: |
+          VERSION=$(npx semantic-release --dry-run | grep 'The next release version is' | awk '{print $NF}')
+          if [ ! -z "$VERSION" ]; then
+            jq '.version = "'$VERSION'"' manifest.json > manifest.tmp
+            mv manifest.tmp manifest.json
+          fi
+
       - name: Install semantic-release
         run: npm install -g semantic-release @semantic-release/git @semantic-release/changelog
 
