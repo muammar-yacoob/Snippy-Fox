@@ -10,6 +10,11 @@
 
 > Save interesting bits from the web in a click!
 
+🦊 Meet Snippy Fox - Your digital "remind me later" buddy
+
+We've all been guilty of the classic "I'll read this later" only to lose it in tab-mageddon. Save snippets with a right click, find them later, close tabs guilt-free.
+
+
 <div align="center">
 
 ![Preview](res/images/preview.png)
