@@ -1,6 +1,6 @@
 [//]: # (Constants)
-[store-link]: https://chrome.google.com/webstore/detail/piohdbapddlkcnbddkheifoeaalgalin
 [ext-id]: piohdbapddlkcnbddkheifoeaalgalin
+[store-link]: https://chrome.google.com/webstore/detail/[ext-id]
 [privacy-link]: https://github.com/muammar-yacoob/Snippy-Fox/blob/main/PRIVACY.md
 
 
@@ -17,7 +17,7 @@ We've all been guilty of the classic "I'll read this later" only to lose it in t
 
 <div align="center">
 
-![Preview](res/images/preview.png)
+[![Preview](res/images/preview.png)][store-link]
 
 [Chrome Web Store][store-link] • [Privacy Policy][privacy-link] • [Report Bug](../../issues)
 
