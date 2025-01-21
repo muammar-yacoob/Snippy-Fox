@@ -27,11 +27,15 @@
 ![Demo](res/images/demo.gif)
 
 ## 🚀 Quick Start
-```bash
-git clone https://github.com/muammar-yacoob/Snippy-Fox.git
-# Load in Chrome: Extensions -> Developer mode -> Load unpacked
-```
+Watch the [demo video](https://youtube.com/shorts/DnWywDT0na8)
 
-Found this useful? Give it a ⭐ and feel free to share ideas or contribute! Released under MIT license.
+## 📥 Installation
+- [Chrome Web Store][store-link]
+- Or load from source:
+  ```bash
+  git clone https://github.com/muammar-yacoob/Snippy-Fox.git
+  ```
+   Load in Chrome: Extensions -> Developer mode -> Load unpacked
 
-[store-badge]: https://img.shields.io/chrome-web-store/v/[ext-id]?label=Chrome%20Web%20Store
+## 🌱 Contributions
+Found this useful? Give it a ⭐ and feel free to share ideas or [contribute.](https://github.com/muammar-yacoob/Snippy-Fox) Released under MIT license.
